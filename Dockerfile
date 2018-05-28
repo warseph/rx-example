@@ -11,6 +11,7 @@ COPY tsconfig.json .sequelizerc ./
 COPY config/ ./config
 COPY migrations/ ./migrations
 COPY src/ ./src
+COPY files/ ./files
 RUN yarn compile
 
 FROM build as clean
