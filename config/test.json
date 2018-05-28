@@ -1,0 +1,6 @@
+{
+  "sequelize": {
+    "database": "test-test",
+    "logging": false
+  }
+}

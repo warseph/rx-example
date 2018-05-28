@@ -1,0 +1,15 @@
+{
+  "sequelize": {
+    "username": "user",
+    "password": "pass",
+    "database": "test",
+    "host": "postgres",
+    "dialect": "postgresql"
+  },
+  "appName": "test",
+  "server": {
+    "port": 4000,
+    "baseUrl": "/test",
+    "logFormat": "tiny"
+  }
+}

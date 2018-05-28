@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+        - env:
+            - name: NODE_ENV
+              value: production
+            - name: NODE_CONFIG_ENV
+              value: '${STAGE}'
+          image: gcr.io/co-gcp/test
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            httpGet:
+              path: /test/healthcheck
+              port: 4000
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+          name: test
+          ports:
+            - containerPort: 4000
+          readinessProbe:
+            httpGet:
+              path: /test/healthcheck
+              port: 4000
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+          resources:
+            limits:
+              memory: 256Mi
